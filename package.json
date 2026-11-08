@@ -1,0 +1,26 @@
+{
+  "name": "cafe-order-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epicturtledoode/cafe-order-site.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/epicturtledoode/cafe-order-site/issues"
+  },
+  "homepage": "https://github.com/epicturtledoode/cafe-order-site#readme",
+  "dependencies": {
+    "astro": "^7.4.7"
+  }
+}

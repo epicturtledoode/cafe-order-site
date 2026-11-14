@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/epicturtledoode/cafe-order-site#readme",
   "dependencies": {
-    "astro": "^7.4.7"
+    "@tailwindcss/vite": "^4.3.5",
+    "astro": "^7.4.7",
+    "tailwindcss": "^4.3.5"
   }
 }

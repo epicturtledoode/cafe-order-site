@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+@theme inline{
+    --font-pixelify: var(--font-pixelify);
+}

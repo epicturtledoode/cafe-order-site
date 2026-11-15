@@ -1,7 +1,11 @@
 ---
 import '../styles/global.css'
+import { Font } from "astro:assets"
 ---
+<head>
+    <Font cssVariable='--font-pixelify' preload/>
+</head>
 
-<div class="max-w bg-blue-300">
-    <h1 class="text-orange-500 py-2 px-4 font-bold --font-dotgothic">Pixil Cafe!</h1>
+<div class="max-w bg-blue-300 border-b-4 border-red-700">
+    <h1 class="text-red-700 py-4 px-8 text-xl font-bold font-pixelify">Pixil Cafe!</h1>
 </div>

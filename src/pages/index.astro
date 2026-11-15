@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css'
+import { Font } from "astro:assets"
 import Header from '../components/header.astro'
 import Button from '../components/button.astro'
 ---
@@ -10,11 +11,12 @@ import Button from '../components/button.astro'
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content ={Astro.generator} >
+        <Font cssVariable='--font-pixelify' preload/>
         <title>Cafe website thing</title>
     </head>
     <body>
         <Header />
-        <h1 class="-font-dotgothic">LET'S GO SHOPPING!</h1>
+        <h1 class="font-pixelify text-4xl">LET'S GO SHOPPING!</h1>
         <h2>But first, determine how much money you have!</h2>
         <Button text="Roll money"/>
     </body>

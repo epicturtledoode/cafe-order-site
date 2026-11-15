@@ -2,6 +2,7 @@
 
 @theme inline{
     --font-pixelify: var(--font-pixelify);
+    --font-IBMplex: var(--font-IBMplex);
     --color-yellow: #ffc40c;
     --color-lightyellow: #fff8dc;
     --color-brown: #3c1414;

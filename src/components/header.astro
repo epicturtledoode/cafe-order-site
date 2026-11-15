@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css'
 import { Font } from "astro:assets"
+const { cvisible=true } = Astro.props
 ---
 <head>
     <Font cssVariable='--font-pixelify' preload/>
@@ -9,7 +10,10 @@ import { Font } from "astro:assets"
 <div class="max-w bg-yellow border-b-4 border-red-700 flex items-center">
     <h1 class="text-brown py-4 px-6 text-2xl font-bold font-pixelify ">Pixil Cafe</h1>
 
-    <a href="/cart" class="ml-auto mr-6">
-        <img src="src\assets\images\icons8-shopping-cart-32.png" alt="Shopping Cart">
-    </a>
+    {cvisible && (
+        <a href="/cart" class="ml-auto mr-6">
+            <img src="src\assets\images\icons8-shopping-cart-32.png" alt="Shopping Cart">
+        </a>
+    )}
+
 </div>

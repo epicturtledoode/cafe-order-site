@@ -13,9 +13,14 @@ import Card from '../components/Card.astro'
         <meta name="generator" content ={Astro.generator} >
         <title>Pixel Cafe</title>
     </head>
-    <Header />
+    <Header cvisible={true}/>
     <body class="bg-lightyellow">
         <p class="text-green-800 font-bold">Money: </p>
-        <Card image="src\assets\images\santa donut.png" name="Santa Donut" price="2.00"/>
+        <div class="grid grid-flow-col grid-rows-2 gap-4">
+            <Card image="src\assets\images\santa donut.png" name="Santa Donut" price="3.00"/>
+            <Card image="src\assets\images\snowman donut.png" name="Snowman Donut" price="3.00"/>
+            <Card image="src\assets\images\christmas tree donut.png" name="Tree Donut" price="3.00"/>
+            <Card image="src\assets\images\candy cane donut.png" name="Candy Cane Donut" price="3.00"/>
+        </div>
     </body>
 </html>

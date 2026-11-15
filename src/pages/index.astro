@@ -14,10 +14,12 @@ import Button from '../components/button.astro'
         <Font cssVariable='--font-pixelify' preload/>
         <title>Cafe website thing</title>
     </head>
-    <body class="bg-lightyellow">
+    <body class="bg-lightyellow min-h-screen flex flex-col">
         <Header />
-        <h1 class="font-pixelify text-4xl">LET'S GO SHOPPING!</h1>
-        <h2>But first, determine how much money you have!</h2>
-        <Button text="Roll money"/>
+        <main class="flex flex-1 flex-col items-center justify-center">
+            <h1 class="font-pixelify text-5xl ">LET'S GO SHOPPING!</h1>
+            <h2 class="text-brown">But first, determine how much money you have!</h2>
+            <Button text="Roll money"/>
+        </main>
     </body>
 </html>

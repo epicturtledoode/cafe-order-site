@@ -2,7 +2,6 @@
 import '../styles/global.css'
 import { Font } from "astro:assets"
 import Header from '../components/header.astro'
-import Button from '../components/button.astro'
 import Card from '../components/Card.astro'
 ---
 
@@ -14,9 +13,9 @@ import Card from '../components/Card.astro'
         <meta name="generator" content ={Astro.generator} >
         <title>Cafe website thing</title>
     </head>
-    <body>
-        <Header />
-        <Button text="hi"/>
+    <Header />
+    <body class="bg-lightyellow">
+        <p class="text-green-800 font-bold">Money: </p>
         <Card image="src\assets\images\santa donut.png" name="Santa Donut" price="2.00"/>
     </body>
 </html>

@@ -1,7 +1,10 @@
 ---
 import '../styles/global.css'
-const { text } = Astro.props
+const { text, scale, class: className="" } = Astro.props
 ---
-<button type="submit" class="bg-green-600 border-green-800 text-white font-bold py-2 px-4 border-b-4 hover:bg-green-500 active:motion-safe:hover:scale-95 transition ease-in-out duration-50 rounded">
-{text}
+
+<button type="submit"
+    style={`transform: scale(${scale})`}
+    class={`bg-green-600 border-green-800 text-white font-bold py-2 px-4 border-b-4 hover:bg-green-500 active:motion-safe:hover:scale-95 transition ease-in-out duration-50 rounded ${className}`}>
+    {text}
 </button>

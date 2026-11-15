@@ -1,12 +1,9 @@
 ---
 import '../styles/global.css'
 import Button from '../components/button.astro'
-import { Font } from "astro:assets"
 const { image, name, price} = Astro.props
 ---
-<head>
-    <Font cssVariable='--font-pixelify' preload/>
-</head>
+
 <body>
     <div class="w-42 rounded overflow-hidden shadow-md outline-4 outline-brown relative bg-yellow">
         <Button text="+", scale="0.75" class="absolute top-0 right-0" />

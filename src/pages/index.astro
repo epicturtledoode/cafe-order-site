@@ -21,14 +21,29 @@ import Button from '../components/button.astro'
     <body class="bg-lightyellow min-h-screen flex flex-col">
         <main class="flex flex-1 flex-col items-center justify-center">
             <h1 class="font-pixelify text-5xl ">LET'S GO SHOPPING!</h1>
-            <h2 class="text-brown font-IBMplex">But first, determine how much money you have!</h2>
+            <h2 class="text-brown font-IBMplex">But first, determine how much money you have</h2>
             <div class="mt-4 flex flex-row">
-                <button class="border-3 border-b-4 w-20 border-green-800 rounded mr-3 text-shadow-2xs text-shadow-green-800 font-bold text-white bg-green-600/40 text-xl">???</button>
-                <Button text="Roll money", scale="1"/>
+                <button id="moneyDisplay" class="border-3 border-b-4 w-20 border-green-800 rounded mr-3 text-shadow-2xs text-shadow-green-800 font-bold text-white bg-green-600/40 text-xl">
+                    $???
+                </button>
+                <Button text="Roll money", scale="1", id="rollButton"/>
+
             </div>
+            
         </main>
         <a href="/bakery">temp link</a>
     </body>
 </html>
 
+<script>
+    const rollButton = document.getElementById("rollButton")
+    const moneyDisplay = document.getElementById("moneyDisplay")
+    let money = String(Math.round(Math.random()*222));
 
+    rollButton?.addEventListener("click", () => {
+        if (moneyDisplay) {
+            moneyDisplay.textContent = `$${money}`;
+        }
+        localStorage.setItem("money", money);
+    })
+</script>

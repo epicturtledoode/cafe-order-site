@@ -11,7 +11,7 @@ const { image, name, price} = Astro.props
     <div class="w-42 rounded overflow-hidden shadow-md outline-4 outline-brown relative bg-yellow">
         <Button text="+", scale="0.75" class="absolute top-0 right-0" />
         <img class="w-2/3 max-h-28 object-cover mx-auto object-[calc(50%-2px)_50%]" src={image} alt={name}>
-        <div class="text-center bg-red-800 border-t-4 border-brown text-white">
+        <div class="text-center bg-red-800 border-t-4 border-brown text-white min-h-21 flex flex-col justify-center">
             <div class="font-bold text-xl font-pixelify ">{name}</div>
             <div class="text-base font-IBMplex ">{price}$</div>
             

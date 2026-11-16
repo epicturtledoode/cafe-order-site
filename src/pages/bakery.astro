@@ -17,7 +17,7 @@ import Card from '../components/Card.astro'
     </head>
     <Header cvisible={true}/>
     <body class="bg-lightyellow">
-        <p class="text-green-800 font-bold">Balance: </p>
+        <p id="balance" class="text-green-800 font-bold">Balance: </p>
         <div class="flex flex-row justify-evenly bg-purple-300">
             <Card image="src\assets\images\santa donut.png" name="Santa Donut" price="3.00"/>
             <Card image="src\assets\images\snowman donut.png" name="Snowman Donut" price="3.00"/>
@@ -26,3 +26,12 @@ import Card from '../components/Card.astro'
         </div>
     </body>
 </html>
+
+<script>
+    const money = localStorage.getItem("money");
+    const balance = document.getElementById("balance")
+
+    if (balance && money) {
+        balance.textContent = `Balance: $${money}`
+    }
+</script>

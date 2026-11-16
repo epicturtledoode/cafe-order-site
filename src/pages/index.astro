@@ -13,7 +13,7 @@ import Button from '../components/button.astro'
         <meta name="generator" content ={Astro.generator} >
         <Font cssVariable='--font-pixelify' preload/>
         <Font cssVariable='--font-IBMplex' preload/>
-        <title>Cafe website thing</title>
+        <title>Pixel Cafe</title>
     </head>
 
     <Header cvisible={false} />
@@ -66,10 +66,8 @@ import Button from '../components/button.astro'
             } else {
                 rolled = true;
                 localStorage.setItem("money", String(money));
-                if (bigText) {
+                if (bigText && smallText) {
                     bigText.textContent = `You got $${money} to spend!`
-                }
-                if (smallText) {
                     smallText.textContent = "The min was $10, and the max was $200"
                 }
 

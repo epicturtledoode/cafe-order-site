@@ -1,15 +1,15 @@
 ---
 import '../styles/global.css'
 import Button from '../components/button.astro'
-const { image, name, price} = Astro.props
+const { image, name, price, large} = Astro.props
 ---
 
 <body>
-    <div class="w-42 rounded overflow-hidden border-dashed border-4 border-red-700 relative bg-yellow border-b-6">
-        <Button text="+", scale="0.75", class="absolute top-0 right-0" />
+    <div class="w-42 rounded overflow-hidden border-4 border-brown relative bg-yellow border-b-6">
+        <Button text="+", scale="0.5", class="absolute top-0 right-0" />
         <img class="w-2/3 max-h-28 object-cover mx-auto object-[calc(50%-2px)_50%]" src={image} alt={name}>
-        <div class="text-center bg-brown border-t-4 border-red-700 text-white p-2 min-h-25 flex flex-col justify-center">
-            <div class="font-bold text-xl font-pixelify ">{name}</div>
+        <div class="text-center bg-brown border-t-4 border-white text-white p-2 min-h-25 flex flex-col justify-center">
+            <div class=`font-bold font-pixelify ${large ? 'text-sm' : 'text-xl'}`>{name}</div>
             <div class="text-base font-IBMplex ">{price}$</div>
             
         </div>

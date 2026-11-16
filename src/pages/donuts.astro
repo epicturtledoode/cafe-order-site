@@ -4,26 +4,34 @@ import Card from '../components/Card.astro'
 ---
 
 <Bakery title="Donuts">
-    <div class="flex flex-row justify-evenly mt-2">
-        <Card image="src\assets\images\santa donut.png" name="Santa Donut" price="3.00"/>
-        <Card image="src\assets\images\snowman donut.png" name="Snowman Donut" price="3.00"/>
-        <Card image="src\assets\images\christmas tree donut.png" name="Christmas Tree Donut" price="3.00"/>
-        <Card image="src\assets\images\candy cane donut.png" name="Candy Cane Donut" price="3.00"/>
-    </div>
-    <div class="flex flex-row justify-evenly mt-2">
-        <Card image="src\assets\images\chocolate donut.png" name="Chocolate Donut" price="3.00"/>
-        <Card image="src\assets\images\powdered donut.png" name="Powdered Donut" price="3.00"/>
-        <Card image="src\assets\images\boston creme donut.png" name="Boston Creme" price="3.00"/>
-    </div>
-    <div class="flex flex-row justify-evenly mt-2">
-        <Card image="src\assets\images\sprinkly chocolate donut.png" name="Sprinkly Chocolate Donut" price="3.00"/>
-        <Card image="src\assets\images\sprinkly strawberry donut.png" name="Sprinkly Strawberry Donut" price="3.00"/>
-    </div>
-    <div class="flex flex-row justify-evenly mt-2">
-        <Card image="src\assets\images\jelly filled powdered donut.png" name="Jelly Filled Powdered Donut" price="3.00"/>
-        <Card image="src\assets\images\jelly filled strawberry donut.png" name="Jelly Filled Strawberry Donut" price="3.00"/>
-    </div>
-    <div class="flex flex-row justify-evenly mt-2">
-        <Card image="src\assets\images\sprinkly jelly filled strawberry donut.png" name="Sprinkly Jelly Filled Strawberry Donut" price="3.00"/>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 w-full max-w-full px-2">
+
+        <div class="col-span-4 flex flex-row justify-evenly items-center gap-4 w-full min-w-0 mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
+            <Card image="src\assets\images\santa donut.png" name="Santa Donut" price="3.00"/>
+            <Card image="src\assets\images\snowman donut.png" name="Snowman Donut" price="3.00"/>
+            <Card image="src\assets\images\christmas tree donut.png" name="Christmas Tree Donut" price="3.00"/>
+            <Card image="src\assets\images\candy cane donut.png" name="Candy Cane Donut" price="3.00"/>
+        </div>
+
+        <div class="col-span-3 flex flex-row justify-evenly items-center gap-4 w-full min-w-0 mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
+            <Card image="src\assets\images\chocolate donut.png" name="Chocolate Donut" price="3.00"/>
+            <Card image="src\assets\images\powdered donut.png" name="Powdered Donut" price="3.00"/>
+            <Card image="src\assets\images\boston creme donut.png" name="Boston Creme" price="3.00"/>
+        </div>
+
+        <div class="col-span-1 flex flex-row justify-evenly items-center gap-4 w-full min-w-0 mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
+            <Card image="src\assets\images\sprinkly jelly filled strawberry donut.png" name="Sprinkly Jelly Filled Strawberry Donut" price="3.00" large={true}/>
+        </div>
+
+        <div class="col-span-2 flex flex-row justify-evenly items-center gap-4 w-full min-w-0 mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
+            <Card image="src\assets\images\sprinkly chocolate donut.png" name="Sprinkly Chocolate Donut" price="3.00"/>
+            <Card image="src\assets\images\sprinkly strawberry donut.png" name="Sprinkly Strawberry Donut" price="3.00"/>
+        </div>
+
+        <div class="col-span-2 flex flex-row justify-evenly items-center gap-4 w-full min-w-0 mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
+            <Card image="src\assets\images\jelly filled powdered donut.png" name="Jelly Filled Powdered Donut" price="3.00"/>
+            <Card image="src\assets\images\jelly filled strawberry donut.png" name="Jelly Filled Strawberry Donut" price="3.00"/>
+        </div>
+
     </div>
 </Bakery>

@@ -2,7 +2,8 @@
 import '../styles/global.css'
 import { Font } from "astro:assets"
 import Header from '../components/header.astro'
-import Card from '../components/Card.astro'
+
+const {title = "Pixel Cafe"} = Astro.props
 ---
 
 <html lang="en">
@@ -11,19 +12,16 @@ import Card from '../components/Card.astro'
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content ={Astro.generator} >
+
         <Font cssVariable='--font-pixelify' preload/>
         <Font cssVariable='--font-IBMplex' preload/>
-        <title>Pixel Cafe</title>
+        <title>{title} | Pixel Cafe</title>
     </head>
-    <Header cvisible={true}/>
     <body class="bg-lightyellow">
+        <Header cvisible={true}/>
         <p id="balance" class="text-green-800 font-bold">Balance: </p>
-        <div class="flex flex-row justify-evenly bg-purple-300">
-            <Card image="src\assets\images\santa donut.png" name="Santa Donut" price="3.00"/>
-            <Card image="src\assets\images\snowman donut.png" name="Snowman Donut" price="3.00"/>
-            <Card image="src\assets\images\christmas tree donut.png" name="Christmas Tree Donut" price="3.00"/>
-            <Card image="src\assets\images\candy cane donut.png" name="Candy Cane Donut" price="3.00"/>
-        </div>
+        <h1 class="text-2xl font-pixelify text-brown text-center">{title}</h1>
+        <slot />
     </body>
 </html>
 

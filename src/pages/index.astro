@@ -20,47 +20,64 @@ import Button from '../components/button.astro'
 
     <body class="bg-lightyellow min-h-screen flex flex-col">
         <main class="flex flex-1 flex-col items-center justify-center">
-            <h1 class="font-pixelify text-5xl ">LET'S GO SHOPPING!</h1>
-            <h2 class="text-brown font-IBMplex">But first, determine how much money you have</h2>
+            <h1 id="bigText" class="font-pixelify text-5xl ">LET'S GO SHOPPING!</h1>
+            <h2 id="smallText" class="text-brown font-IBMplex">But first, determine how much money you have</h2>
             <div class="mt-4 flex flex-row">
                 <button id="moneyDisplay" class="border-3 border-b-4 w-20 border-green-800 rounded mr-3 text-shadow-2xs text-shadow-green-800 font-bold text-white bg-green-600/40 text-xl">
                     $???
                 </button>
-                <Button text="Roll money", scale="1", id="rollButton"/>
-
+                <Button text="Roll money", scale="1", id="rollButton", class="visible"/>
+                <a href="\bakery">
+                    <Button text="Continue", scale="1", id="continueButton", class="hidden"/>
+                </a>
             </div>
             
         </main>
-        <a href="/bakery">temp link</a>
     </body>
 </html>
 
 <script>
+    let rolled = false
     const rollButton = document.getElementById("rollButton") as HTMLButtonElement
     const moneyDisplay = document.getElementById("moneyDisplay")
+    const continueButton = document.getElementById("continueButton") as HTMLButtonElement
+    const bigText = document.getElementById("bigText")
+    const smallText = document.getElementById("smallText")
 
     rollButton?.addEventListener("click", () => {
-        rollButton.disabled = true;
-        let money = String(Math.round(Math.random()*222));
-        const duration = 5000;
-        const startTime = performance.now();
+        if (rolled == false) {
+            rollButton.disabled = true;
+            let money = String((Math.round(Math.random()*190))+10);
+            const duration = 5000;
+            const startTime = performance.now();
 
-        function countdown(currentTime: number) {
-            const elapsed = currentTime - startTime;
-            const progress = Math.min(elapsed / duration, 1);
+            function countdown(currentTime: number) {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1);
 
-            const currentMoney = Math.round(222 - (222-Number(money))*progress);
+                const currentMoney = Math.round(200 - (200-Number(money))*progress);
 
-        if (moneyDisplay) {
-            moneyDisplay.textContent = `$${currentMoney}`;
+            if (moneyDisplay) {
+                moneyDisplay.textContent = `$${currentMoney}`;
+            }
+
+            if (progress < 1) {
+                requestAnimationFrame(countdown);
+            } else {
+                rolled = true;
+                localStorage.setItem("money", String(money));
+                if (bigText) {
+                    bigText.textContent = `You got $${money} to spend!`
+                }
+                if (smallText) {
+                    smallText.textContent = "The min was $10, and the max was $200"
+                }
+
+                rollButton.classList.replace("visible","hidden")
+                continueButton.classList.replace("hidden","visible")
+            }
         }
-
-        if (progress < 1) {
             requestAnimationFrame(countdown);
-        } else {
-            localStorage.setItem("money", String(money));
-        }
-    }
-        requestAnimationFrame(countdown);
+            }
     })
 </script>

@@ -11,15 +11,22 @@ import Header from '../components/header.astro'
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content ={Astro.generator} >
         <Font cssVariable='--font-pixelify' preload/>
+        <Font cssVariable='--font-IBMplex' preload/>
         <title>Cart | Pixel Cafe</title>
     </head>
 
-    <Header />
-
     <body class="bg-lightyellow">
+        <Header />
+        <div class="flex justify-center mt-4">
+            <div class="w-2/3 border-3 p-4">
+                <h1 class="font-pixelify text-2xl">Your Cart</h1>
+                <ul>
+                </ul>
+            </div>
+        </div>
     </body>
 </html>
 
-<script src="cart.js">
+<script src="../scripts/cart.js">
 
 </script>

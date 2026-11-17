@@ -19,14 +19,32 @@ import Header from '../components/header.astro'
         <Header />
         <div class="flex justify-center mt-4">
             <div class="w-2/3 border-3 p-4">
-                <h1 class="font-pixelify text-2xl">Your Cart</h1>
-                <ul>
+                <h1 class="font-pixelify text-2xl mb-6">Your Cart</h1>
+                <ul id="cart-list" class="font-IBMplex">
+
                 </ul>
             </div>
         </div>
     </body>
 </html>
 
-<script src="../scripts/cart.js">
+<script>
+    const cart = JSON.parse(localStorage.getItem("cart") || "{}");
+    const cartList = document.querySelector("#cart-list")
+
+    if (cartList) {
+        if (Object.keys(cart).length === 0) {
+            cartList.innerHTML = 'Your cart is empty, <a href="/donuts" class="text-red-700 underline"> try adding something</a>';
+        } else {
+            Object.entries(cart).forEach(([name, quantity]) => {
+                const li = document.createElement("li");
+                li.className = "border-b-2 border-dashed mb-4";
+
+                li.textContent = name + quantity;
+                cartList.appendChild(li);
+
+            });
+        }
+    }
 
 </script>

@@ -28,10 +28,12 @@ const {title = "Pixel Cafe"} = Astro.props
 </html>
 
 <script>
+    import "../scripts/cart.js";
     const money = localStorage.getItem("money");
     const balance = document.getElementById("balance")
 
     if (balance && money) {
         balance.textContent = `Balance: $${money}`
     }
+
 </script>

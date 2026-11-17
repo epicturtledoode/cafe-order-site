@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css'
-import Button from '../components/button.astro'
-const { image, name, price, large} = Astro.props
+const { image, name, price, large=false} = Astro.props
 ---
 
 <body>
@@ -12,9 +11,12 @@ const { image, name, price, large} = Astro.props
 
             <div class={`font-bold font-pixelify ${large && 'text-sm'}`}>{name}</div>
 
-            <div class="flex items-center justify-between mt-auto">
-                <div class="text-base font-IBMplex w-full">{price}$</div>
-                <Button text="Add", scale="0.5"/>
+            <div class="flex items-center mt-auto relative">
+                <div class="ml-2 text-base font-IBMplex w-full">{price}$</div>
+                <button data-add-to-cart data-id={name} data-price={price} class="mr-2 scale-55 whitespace-nowrap bg-green-600 border-green-800 text-white font-bold py-2 p-4 border-b-4 hover:bg-green-500 active:motion-safe:hover:scale-60 transition ease-in-out duration-50 rounded disabled:opacity-50 disabled:cursor-not-allowed">
+                    Add
+                </button>
+                
             </div>
             
         </div>

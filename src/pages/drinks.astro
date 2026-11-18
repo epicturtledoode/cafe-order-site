@@ -12,8 +12,8 @@ import Card from '../components/Card.astro'
         <div class="w-full flex flex-wrap gap-4 justify-evenly items-center mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
             <Card image="src/assets/images/hot chocolate.png" name="Hot Chocolate" price="3.00"/>
             <Card image="src/assets/images/marshmellow hot chocolate.png" name="Hot Chocolate with Marshmellow" price="3.00" large={true}/>
-            <Card image="src/assets/images/candycane hot chocolate.png" name="Hot Chocolate with Candy Cane" price="3.50" large={true}/>
-            <Card image="src/assets/images/candy cane donut.png" name="Candy Cane Donut" price="3.00"/>
+            <Card image="src/assets/images/candy cane hot chocolate.png" name="Hot Chocolate with Candy Cane" price="3.00" large={true}/>
+            <Card image="src/assets/images/santa latte art.png" name="Santa Latte Art" price="3.00"/>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-4 w-full gap-4">
@@ -38,5 +38,28 @@ import Card from '../components/Card.astro'
                 </div>
             </div>
         </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 w-full gap-4">
+            <div class="lg:col-span-1">
+                <h1 class="inline-block text-2xl font-pixelify text-brown border-dashed border-b-3 border-red-700">
+                    Fancy Coffee
+                </h1>
+                <div class="w-full flex flex-wrap gap-4 justify-evenly items-center mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
+                    <Card image="src/assets/latte.png" name="Latte" price="3.00"/>
+                    <Card image="src/assets/frappe.png" name="Frappe" price="3.00"/>
+                </div>
+            </div>
+
+            <div class="lg:col-span-1">
+                <h1 class="inline-block text-2xl font-pixelify text-brown border-dashed border-b-3 border-red-700">
+                    Juice
+                </h1>
+                <div class="w-full flex flex-wrap gap-4 justify-evenly items-center mx-auto my-2 p-3 bg-red-700 rounded-3xl border-dashed border-white border-4">
+                    <Card image="src/assets/images/orange juice.png" name="Orange Juice" price="1.50"/>
+                    <Card image="src/assets/images/apple juice.png" name="Apple Juice" price="1.50"/>                    <Card image="src/assets/images/jelly filled strawberry donut.png" name="Jelly Filled Strawberry Donut" price="3.00" large={true}/>
+                </div>
+            </div>
+        </div>
+
     </div>
 </Bakery>

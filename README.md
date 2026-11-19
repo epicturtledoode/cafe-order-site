@@ -7,8 +7,8 @@ This is a project for the Order Up Quest for Hackclub Pixl. You start with a ran
 
 ## Screenshots
 
-## Installing 
-Clone the repo. Run npm run dev
+## How it works 
+1. Roll for your budget. This is the unique part of this cafe website. The budget ranges from $10 to $200, and iti s how much money you have to spend at the cafe. You cannot buy the items if it exceeds your budget, so you have to manage your cart well to get everything you want.  
 
 ## Credits
 Color codes from this website: https://html-color.codes
@@ -17,7 +17,7 @@ Font: https://fontsource.org/fonts/pixelify-sans
 
 Shopping cart icon: https://icons8.com/icons/all--style-pixels
 
-1% AI (this line: [calc(50%-2px)_50%] for centering image by 2 px and also the logic of the roll animation) 
+1% AI Which is the logic of the roll animation
 
 ## License
 This is liscened under the MIT License

@@ -1,19 +1,21 @@
 const buttons = document.querySelectorAll("[data-add-to-cart]");
 
-const cart = JSON.parse(localStorage.getItem("cart")) || {};
+const cart = JSON.parse(localStorage.getItem("cart")) || "{}";
 
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
         const name = button.dataset.id;
+        const price = Number(button.dataset.price);
+        
         if (cart[name]) {
-            cart[name]++;
+            cart[name].quantity++;
         } else {
-            cart[name] = 1;
-        }
+            cart[name] = {quantity:1, price:price};
+        };
 
         localStorage.setItem("cart", JSON.stringify(cart))
 
-        button.textContent = `Add (${cart[name]})`
+        button.textContent = `Add (${cart[name].quantity})`
 
         console.log(cart)
 

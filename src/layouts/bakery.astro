@@ -21,7 +21,8 @@ const {title = "Pixel Cafe"} = Astro.props
         <Header cvisible={true}/>
         <div class="flex items-center relative w-full m-4">
             <h1 class="text-2xl font-IBMplex text-white bg-red-700 absolute left-1/2 -translate-x-1/2">{title}</h1>
-            <p id="balance" class="text-green-800 font-bold ml-auto mr-8 font-IBMplex">Balance: </p>
+            <p id="budget" class="text-green-800 font-bold mr-8 font-IBMplex">Budget: </p>
+            <p id="cartBal" class="text-green-800 font-bold ml-auto mr-8 font-IBMplex">In cart: $0</p>
         </div>
         <slot />
     </body>
@@ -30,10 +31,15 @@ const {title = "Pixel Cafe"} = Astro.props
 <script>
     import "../scripts/cart.js";
     const money = localStorage.getItem("money");
-    const balance = document.getElementById("balance")
+    const cartTotal = localStorage.getItem("cartTotal");
+    const budget = document.getElementById("budget");
+    const cartBal = document.getElementById("cartBal");
 
-    if (balance && money) {
-        balance.textContent = `Balance: $${money}`
+    if (budget && money) {
+        budget.textContent = `Budget: $${money}`;
     }
 
+    if (cartBal && cartTotal) {
+        cartBal.textContent = `In cart: $${cartTotal}`
+    }
 </script>

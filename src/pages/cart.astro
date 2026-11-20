@@ -17,9 +17,9 @@ import Header from '../components/header.astro'
 
     <body class="bg-lightyellow">
         <Header />
-        <div class="flex justify-center mt-4">
-            <div class="w-2/3 border-3 p-4">
-                <div class="font-pixelify text-2xl border-b-3 border-red-700 mb-6">Your Cart</div>
+        <div class="flex justify-center mt-6">
+            <div class="w-2/3 border-3 p-6">
+                <div class="font-pixelify text-2xl border-b-3 border-red-700 mb-4">Your Cart</div>
                 <ul id="cart-list" class="font-IBMplex">
                     <li id="total-display" class="border-2 border-dashed border-red-700 p-2">Cart total:</li>
                 </ul>
@@ -32,6 +32,7 @@ import Header from '../components/header.astro'
     type cartItem = {
         quantity: number;
         price: number;
+        icon: string;
     };
 
     const cart: Record<string, cartItem> = JSON.parse(localStorage.getItem("cart") || "{}");
@@ -46,9 +47,15 @@ import Header from '../components/header.astro'
         } else {
             Object.entries(cart).forEach(([name, item]) => {
                 const li = document.createElement("li");
-                li.className = "border-b-2 border-dashed mb-4";
+                li.className = "border-b-2 border-dashed mb-4 flex items-center p-2";
 
-                li.textContent = `${name} x ${item.quantity} - $${item.price*item.quantity}`;
+                const img = document.createElement("img")
+                img.src = item.icon;
+                img.alt = name;
+                img.className = "mr-2 w-12"
+
+                li.appendChild(img)
+                li.append(`${name} x ${item.quantity} - $${item.price*item.quantity}`);
                 cartList.prepend(li);
 
 

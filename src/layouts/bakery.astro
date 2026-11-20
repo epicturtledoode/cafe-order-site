@@ -30,16 +30,36 @@ const {title = "Pixel Cafe"} = Astro.props
 
 <script>
     import "../scripts/cart.js";
+
     const money = localStorage.getItem("money");
-    const cartTotal = localStorage.getItem("cartTotal");
+    type cartItem = {
+        quantity: number;
+        price: number;
+        icon: string;
+    };
+    const cart: Record<string, cartItem> = JSON.parse(localStorage.getItem("cart") || "{}");
     const budget = document.getElementById("budget");
     const cartBal = document.getElementById("cartBal");
+    
+    let cartTotal = 0;
+
+    Object.values(cart).forEach((item) => {
+        cartTotal += item.price * item.quantity;
+    })
 
     if (budget && money) {
-        budget.textContent = `Budget: $${money}`;
+        budget.textContent = `Budget: $${(Number(money)).toFixed(2)}`;
     }
 
-    if (cartBal && cartTotal) {
+    if (cartBal) {
         cartBal.textContent = `In cart: $${cartTotal}`
+
+        if (cartTotal > Number(money)) {
+            cartBal.classList.remove("text-green-800");
+            cartBal.classList.add("text-red-800");
+        } else {
+            cartBal.classList.add("text-green-800");
+            cartBal.classList.remove("text-red-800");
+        }
     }
 </script>

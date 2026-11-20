@@ -14,7 +14,16 @@ buttons.forEach((button) => {
             cart[name] = {quantity:1, price:price, icon:icon};
         };
 
-        localStorage.setItem("cart", JSON.stringify(cart))
+        localStorage.setItem("cart", JSON.stringify(cart));
+        const cartBal = document.getElementById("cartBal");
+
+        if (cartBal) {
+            const total = Object.values(cart).reduce(
+                (sum, item) => sum + item.price * item.quantity,0
+            );
+            cartBal.textContent = `In cart: $${total.toFixed(2)}`;
+        }
+
 
         button.textContent = `Add (${cart[name].quantity})`
 

@@ -18,10 +18,10 @@ import Header from '../components/header.astro'
     <body class="bg-lightyellow">
         <Header />
         <div class="flex justify-center mt-6">
-            <div class="w-2/3 border-3 p-6">
+            <div class="border-3 p-6 sm:w-5/6 lg:w-3/5">
                 <div class="font-pixelify text-2xl border-b-3 border-red-700 mb-4">Your Cart</div>
                 <ul id="cart-list" class="font-IBMplex">
-                    <li id="total-display" class="border-2 border-dashed border-red-700 p-2">Cart total:</li>
+                    <li id="total-display" class="border-2 border-dashed border-red-700 p-2 text-right">Cart total:</li>
                 </ul>
             </div>
         </div>
@@ -40,6 +40,25 @@ import Header from '../components/header.astro'
     const cartList = document.getElementById("cart-list");
     const totalDisplay = document.getElementById("total-display");
     var cartTotal = 0;
+
+    const updateCartTotal = () => {
+        cartTotal = 0;
+
+        Object.values(cart).forEach((item) => {
+            cartTotal += item.price*item.quantity;
+        });
+
+        if (totalDisplay) {
+            totalDisplay.textContent = `Cart total: $${cartTotal.toFixed(2)}`
+        };
+
+        localStorage.setItem("cartTotal", cartTotal.toFixed(2));
+        const cartBal = document.getElementById("cartBal");
+        if (cartBal) {
+            cartBal.textContent = `In cart: $${cartTotal.toFixed(2)}`
+        }
+    };
+    updateCartTotal();
 
     if (cartList) {
         if (Object.keys(cart).length === 0) {
@@ -78,6 +97,7 @@ import Header from '../components/header.astro'
                     delete cart[name];
                     localStorage.setItem("cart", JSON.stringify(cart));
                     li.remove();
+                    updateCartTotal();
                 });
 
                 subBtn.addEventListener("click", () => {
@@ -91,12 +111,14 @@ import Header from '../components/header.astro'
                         subTotal.textContent = `$${(item.price*item.quantity).toFixed(2)}`;
                         localStorage.setItem("cart", JSON.stringify(cart));
                     }
+                    updateCartTotal();
                 });
 
                 addBtn.addEventListener("click", () => {
                     item.quantity += 1;
                     subTotal.textContent = `$${(item.price*item.quantity).toFixed(2)}`;
                     localStorage.setItem("cart", JSON.stringify(cart));
+                    updateCartTotal();
                 })
 
                 const controls = document.createElement("div");

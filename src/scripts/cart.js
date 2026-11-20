@@ -26,8 +26,5 @@ buttons.forEach((button) => {
 
 
         button.textContent = `Add (${cart[name].quantity})`
-
-        console.log(cart)
-
     });
 });

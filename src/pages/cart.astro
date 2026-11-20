@@ -22,7 +22,11 @@ import Button from '../components/button.astro'
             <div class="border-3 p-6 sm:w-5/6 lg:w-3/5">
                 <div class="font-pixelify text-2xl border-b-3 border-red-700 mb-4">Your Cart</div>
                 <ul id="cart-list" class="font-IBMplex">
-                    <li id="total-display" class="border-2 border-dashed border-red-700 p-2 text-right">Cart total:</li>
+                    <li class="flex flex-row border-2 border-dashed border-red-700 p-2">
+                        <span id="budget-display">Budget:</span>
+                        <span id="total-display" class="ml-auto text-green-700">Cart total: $0</span>
+                    </li>
+                    <!-- <li id="total-display" class="border-2 border-dashed border-red-700 p-2 text-right">Cart total:</li> -->
                 </ul>
                 <div class="flex justify-center mt-4">
                     <Button text="Checkout", id="checkoutBtn"/>
@@ -41,10 +45,16 @@ import Button from '../components/button.astro'
     };
 
     const cart: Record<string, cartItem> = JSON.parse(localStorage.getItem("cart") || "{}");
+    const budget = localStorage.getItem("money");
     
     const cartList = document.getElementById("cart-list");
+    const budgetDisplay = document.getElementById("budget-display");
     const totalDisplay = document.getElementById("total-display");
     var cartTotal = 0;
+
+    if (budgetDisplay) {
+        budgetDisplay.textContent = `Budget: $${budget}`
+    }
 
     const updateCartTotal = () => {
         cartTotal = 0;
@@ -55,6 +65,15 @@ import Button from '../components/button.astro'
 
         if (totalDisplay) {
             totalDisplay.textContent = `Cart total: $${cartTotal.toFixed(2)}`
+            if (budget) {
+                if (cartTotal > Number(budget)) {
+                    totalDisplay.classList.remove("text-green-700");
+                    totalDisplay.classList.add("text-red-700");
+                } else {
+                    totalDisplay.classList.add("text-green-700");
+                    totalDisplay.classList.remove("text-red-700");
+                }
+            }
         };
 
         localStorage.setItem("cartTotal", cartTotal.toFixed(2));

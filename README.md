@@ -17,7 +17,7 @@ Font: https://fontsource.org/fonts/pixelify-sans
 
 Shopping cart icon: https://icons8.com/icons/all--style-pixels
 
-1% AI Which is the logic of the roll animation
+AI Use: JS Debugging only 
 
 ## License
 This is liscened under the MIT License

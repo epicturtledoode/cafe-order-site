@@ -49,15 +49,25 @@ import Header from '../components/header.astro'
                 const li = document.createElement("li");
                 li.className = "border-b-2 border-dashed mb-4 flex items-center p-2";
 
-                const img = document.createElement("img")
+                const img = document.createElement("img");
                 img.src = item.icon;
                 img.alt = name;
                 img.className = "mr-2 w-12"
 
-                li.appendChild(img)
-                li.append(`${name} x ${item.quantity} - $${item.price*item.quantity}`);
-                cartList.prepend(li);
+                const removeBtn = document.createElement("button");
+                removeBtn.textContent = "x";
+                removeBtn.className = "bg-red-700 text-white ml-auto pt-1 pb-1 pl-2 pr-2 font-IBMplex cursor-pointer";
 
+                removeBtn.addEventListener("click", () => {
+                    delete cart[name];
+                    localStorage.setItem("cart", JSON.stringify(cart));
+                    li.remove();
+                })
+
+                li.appendChild(img);
+                li.append(`${name} x ${item.quantity} - $${item.price*item.quantity}`);
+                li.appendChild(removeBtn);
+                cartList.prepend(li);
 
             });
         }

@@ -20,8 +20,8 @@ import Button from '../components/button.astro'
 
     <body class="bg-lightyellow min-h-screen flex flex-col">
         <main class="flex flex-1 flex-col items-center justify-center">
-            <h1 id="bigText" class="font-pixelify text-5xl ">TIME TO BUY FOOD!</h1>
-            <h2 id="smallText" class="text-brown font-IBMplex">But first, determine your budget</h2>
+            <h1 id="bigText" class="font-pixelify text-5xl ">Buy food on a budget!</h1>
+            <h2 id="smallText" class="text-brown font-IBMplex">Press roll to determine your budget ($10-100)</h2>
             <div class="mt-4 flex flex-row">
                 <button id="moneyDisplay" class="border-3 border-b-4 w-20 border-green-800 rounded mr-3 text-shadow-2xs text-shadow-green-800 font-bold text-white bg-green-600/40 text-xl">
                     $???
@@ -47,15 +47,15 @@ import Button from '../components/button.astro'
     rollButton?.addEventListener("click", () => {
         if (rolled == false) {
             rollButton.disabled = true;
-            let money = String((Math.round(Math.random()*190))+10);
-            const duration = 5000;
+            let money = String((Math.round(Math.random()*90))+10);
+            const duration = 4000;
             const startTime = performance.now();
 
             function countdown(currentTime: number) {
                 const elapsed = currentTime - startTime;
                 const progress = Math.min(elapsed / duration, 1);
 
-                const currentMoney = Math.round(200 - (200-Number(money))*progress);
+                const currentMoney = Math.round(100 - (100-Number(money))*progress);
 
             if (moneyDisplay) {
                 moneyDisplay.textContent = `$${currentMoney}`;
@@ -68,7 +68,7 @@ import Button from '../components/button.astro'
                 localStorage.setItem("money", String(money));
                 if (bigText && smallText) {
                     bigText.textContent = `You got $${money} to spend!`
-                    smallText.textContent = "The min was $10, and the max was $200"
+                    smallText.textContent = "The min was $10, and the max was $100"
                 }
 
                 rollButton.classList.replace("visible","hidden")

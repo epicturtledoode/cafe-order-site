@@ -6,7 +6,7 @@ const page = Astro.url.pathname
 ---
 
 <div class="max-w bg-yellow border-b-4 border-red-700 flex items-center">
-    <a href="/" class="text-brown m-4 text-2xl font-bold font-pixelify ">Pixil Cafe</a>
+    <span class="text-brown m-4 text-2xl font-bold font-pixelify ">Pixil Cafe</span>
     {lvisible && (
         <a href="/donuts" class={`text-brown text-1xl hover:bg-red-700 hover:text-white font-IBMplex m-4
         ${page === "/donuts" ? "bg-red-700 text-white" : ""}`}>Donuts</a>

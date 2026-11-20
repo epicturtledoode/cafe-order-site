@@ -44,10 +44,12 @@ import Button from '../components/button.astro'
             <h2 class="font-pixelify text-2xl border-b-2 border-red-700 mb-4">Receipt:</h2>
             
             <ul id="checkout-items" class="font-IBMplex mb-4">
+                You.. bought nothing?
             </ul>
 
             <div id="checkout-total" class="font-bold font-IBMplex text-right border-t-2 border-red-700 pt-2"></div>
             <div class="text-center mt-4 font-pixelify text-2xl bg-yellow">Thank you for coming to Pixel Cafe!</div>
+            <a href="\" onclick="localStorage.clear()" class="font-IBMplex text-green-700 mt-2 flex justify-center underline">Try again</a>
             
         </dialog>
     </body>
@@ -67,6 +69,13 @@ import Button from '../components/button.astro'
     const budgetDisplay = document.getElementById("budget-display");
     const totalDisplay = document.getElementById("total-display");
     var cartTotal = 0;
+
+    const checkoutBtn = document.getElementById("checkoutBtn");
+    const closeOverbudget = document.getElementById("close-overbudget");
+    const checkoutPopup = document.getElementById("checkout-popup") as HTMLDialogElement;
+    const overbudgetPopup = document.getElementById("overbudget-popup") as HTMLDialogElement;
+    const checkoutItems = document.getElementById("checkout-items");
+    const checkoutTotal = document.getElementById("checkout-total");
 
     if (budgetDisplay) {
         budgetDisplay.textContent = `Budget: $${budget}`
@@ -103,7 +112,9 @@ import Button from '../components/button.astro'
     if (cartList) {
         if (Object.keys(cart).length === 0) {
             cartList.innerHTML = 'Your cart is empty, <a href="/donuts" class="text-red-700 underline"> try adding something</a>';
+            checkoutBtn?.classList.add("hidden");
         } else {
+            checkoutBtn?.classList.remove("hidden")
             Object.entries(cart).forEach(([name, item]) => {
                 const li = document.createElement("li");
                 li.className = "border-b-2 border-dashed mb-4 flex items-center p-2";
@@ -178,26 +189,21 @@ import Button from '../components/button.astro'
 
             });
         }
-    }
-
-    const checkoutBtn = document.getElementById("checkoutBtn");
-    const closeOverbudget = document.getElementById("close-overbudget");
-    const checkoutPopup = document.getElementById("checkout-popup") as HTMLDialogElement;
-    const overbudgetPopup = document.getElementById("overbudget-popup") as HTMLDialogElement;
-    const checkoutItems = document.getElementById("checkout-items");
-    const checkoutTotal = document.getElementById("checkout-total");
-    
+    }    
 
     checkoutBtn?.addEventListener("click", () => {
         if (cartTotal > Number(budget)) {
             overbudgetPopup.showModal();
         } else {
             if (checkoutItems && checkoutTotal && checkoutPopup) {
-
+                if (Object.keys(cart).length !== 0) {
+                    checkoutItems.innerHTML = "";
+                }
                 Object.entries(cart).forEach(([name, item]) => {
+
                     const li = document.createElement("li");
 
-                    li.className = "flex justify-between border-b border-dashed border-red-700 py-2";
+                    li.className = "flex justify-between border-b border-dashed border-black py-2";
 
                     const itemName = document.createElement("span");
                     itemName.textContent = `${name} x${item.quantity}`;

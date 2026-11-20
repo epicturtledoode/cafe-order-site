@@ -2,6 +2,7 @@
 import '../styles/global.css'
 import { Font } from "astro:assets"
 import Header from '../components/header.astro'
+import Button from '../components/button.astro'
 ---
 
 <html lang="en">
@@ -23,6 +24,10 @@ import Header from '../components/header.astro'
                 <ul id="cart-list" class="font-IBMplex">
                     <li id="total-display" class="border-2 border-dashed border-red-700 p-2 text-right">Cart total:</li>
                 </ul>
+                <div class="flex justify-center mt-4">
+                    <Button text="Checkout", id="checkoutBtn"/>
+                </div>
+                
             </div>
         </div>
     </body>
